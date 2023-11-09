@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<h2>Gobal Chat</h2>
+
+<div>
+    Connected: {{ isConnected }}
+</div>
+
+<form [formGroup]="chatFormGroup" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName = "message" placeholder="Message"> 
+    <button type="submit" class = "btn btn-primary" [disabled]="chatFormGroup.invalid">send</button>
+</form>
+
+<h3>Messages</h3>
+<ul>
+    <li *ngFor="let message of messages">
+        {{ message.from }} - {{ message.message }} - {{ message.created }}
+    </li>
+</ul>
